@@ -6,7 +6,7 @@
 		"php": "~8.1",
 		"nette/bootstrap": "~2.4.5",
 		"nette/caching": "~2.5.6",
-		"nette/di": "~2.4.10",
+        "nette/di": "^3.2",
 		"nette/mail": "~2.4.3",
 		"nette/utils": "~2.4.8",
 		"nextras/dbal": "~3.0@dev",
