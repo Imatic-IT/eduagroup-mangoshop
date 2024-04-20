@@ -1,0 +1,19 @@
+services:
+	processingDriver: MangoShop\Bicistickers\Model\BicistickersOrderProcessingDriver
+
+	- MangoShop\Bicistickers\Model\OrderMailerInvoker
+	@MangoShop\Order\Model\OrderEventDispatcher:
+		setup:
+			- registerOrderStateChangeListener(@MangoShop\Bicistickers\Model\OrderMailerInvoker)
+
+	orderMailer: MangoShop\Bicistickers\Model\OrderMailer
+
+	@MangoShop\Product\Model\ProductTranslationsMapper:
+		factory: MangoShop\Bicistickers\Model\BicistickersProductTranslationsMapper
+		arguments:
+			cache: @nextras.orm.cache
+
+	@MangoShop\Product\Model\ProductVariantTranslationsMapper:
+		factory: MangoShop\Bicistickers\Model\BicistickersProductVariantTranslationsMapper
+		arguments:
+			cache: @nextras.orm.cache

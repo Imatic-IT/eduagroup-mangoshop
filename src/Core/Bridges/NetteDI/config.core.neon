@@ -1,0 +1,2 @@
+services:
+	- MangoShop\Core\NextrasOrm\TransactionManager

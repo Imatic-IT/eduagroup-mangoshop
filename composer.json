@@ -1,0 +1,61 @@
+{
+	"name": "mangoweb/mangoshop",
+	"type": "library",
+	"description": "Simple almost event-sourced Nextras ORM based e-shop SDK",
+	"require": {
+		"php": "~7.1",
+		"nette/bootstrap": "~2.4.5",
+		"nette/caching": "~2.5.6",
+		"nette/di": "~2.4.10",
+		"nette/mail": "~2.4.3",
+		"nette/utils": "~2.4.8",
+		"nextras/dbal": "~3.0@dev",
+		"nextras/orm": "~3.0@dev",
+		"marc-mabe/php-enum": "~3.0",
+		"gopay/payments-sdk-php": "~1.3.4",
+		"psr/log": "~1.0",
+		"mangoweb/exception-responsibility": "0.0.1",
+		"symfony/console": "~3.4",
+		"contributte/console": "^0.2.0"
+	},
+	"require-dev": {
+		"nette/robot-loader": "~3.0.2",
+		"nette/tester": "~2.0",
+		"phpstan/phpstan-shim": "~0.9",
+		"phpstan/phpstan-nette": "~0.9",
+		"mockery/mockery": "~1.0",
+		"mangoweb/presenter-tester": "@dev",
+		"mangoweb/tester-infrastructure": "@dev",
+		"mangoweb/tester-database-creator": "@dev",
+		"nextras/migrations": "~3.1@dev",
+		"tracy/tracy": "~2.4",
+		"fzaninotto/faker": "^1.7"
+	},
+	"autoload": {
+		"classmap": [
+			"apps/",
+			"packages/",
+			"src/"
+		]
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/phpstan/",
+			"tests/src/"
+		]
+	},
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "manGoweb",
+			"email": "info@mangoweb.org"
+		}
+	],
+	"config": {
+		"preferred-install": "dist",
+		"optimize-autoloader": true,
+		"classmap-authoritative": true,
+		"bin-compat": "full"
+	},
+	"minimum-stability": "stable"
+}

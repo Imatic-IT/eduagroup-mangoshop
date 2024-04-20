@@ -1,0 +1,12 @@
+/composer.lock
+/log/
+!.gitkeep
+/temp/
+/vendor/
+
+/tests/**/output
+/tests/php.ini
+/tools
+/public/dist
+/tests/config/local.neon
+/apps/*/*/config/local.neon

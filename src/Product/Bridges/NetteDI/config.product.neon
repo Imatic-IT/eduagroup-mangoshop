@@ -1,0 +1,16 @@
+services:
+	productFacade:
+		class: MangoShop\Product\Api\ProductFacade
+		tags: [shop.api]
+
+	productVariantFacade:
+		class: MangoShop\Product\Api\ProductVariantFacade
+		tags: [shop.api]
+
+	productPricingGroupFacade:
+		class: MangoShop\Product\Api\ProductPricingGroupFacade
+		tags: [shop.api]
+
+	productVariantPricingFacade:
+		class: MangoShop\Product\Api\ProductVariantPricingFacade
+		tags: [shop.api]

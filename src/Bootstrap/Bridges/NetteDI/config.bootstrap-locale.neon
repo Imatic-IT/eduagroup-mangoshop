@@ -1,0 +1,6 @@
+includes:
+	- config.bootstrap-core.neon
+
+
+extensions:
+	locale: MangoShop\Locale\Bridges\NetteDI\LocaleExtension

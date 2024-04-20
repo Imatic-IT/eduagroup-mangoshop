@@ -1,0 +1,46 @@
+includes:
+	- common.neon
+
+
+extensions:
+	mango.tester.databaseCreator: Mangoweb\Tester\DatabaseCreator\Bridges\NetteDI\DatabaseCreatorExtension
+	mango.tester: Mangoweb\Tester\Infrastructure\MangoTesterExtension
+
+	app.infrastructure: MangoShopTests\InfrastructureExtension
+
+
+mango.tester.databaseCreator:
+	dbal: Mangoweb\Tester\DatabaseCreator\Bridges\NextrasDbal\NextrasDbalAdapter(@databaseCreatorDbal)
+	driver: mysql
+	migrations: Mangoweb\Tester\DatabaseCreator\Bridges\NextrasMigrations\NextrasMigrationsDriver()
+	strategy: reset
+
+
+nextras.migrations:
+	groups: []
+
+
+services:
+	- MangoShopTests\Analysis\SourceCodeProvider([%srcDir%, %testDir%], "%testDir%/cases")
+	-
+		class: MangoShopTests\EntityGenerator
+		setup:
+			- addFactory(MangoShopTests\Address\Inc\AddressEntityFactory())
+			- addFactory(MangoShopTests\Channel\Inc\ChannelEntityFactory())
+			- addFactory(MangoShopTests\Locale\Inc\LocaleEntityFactory())
+			- addFactory(MangoShopTests\Money\Inc\MoneyEntityFactory())
+			- addFactory(MangoShopTests\Order\Inc\OrderEntityFactory())
+			- addFactory(MangoShopTests\Payment\Inc\PaymentEntityFactory())
+			- addFactory(MangoShopTests\PaymentGoPay\Inc\GoPayPaymentMethodFactory())
+			- addFactory(MangoShopTests\Product\Inc\ProductEntityFactory())
+			- addFactory(MangoShopTests\Promotion\Inc\PromotionEntityFactory())
+			- addFactory(MangoShopTests\Shipping\Inc\ShippingEntityFactory())
+	- MangoShopTests\Suite\AppConfiguratorFactory
+
+	databaseCreatorDbal:
+		autowired: false
+		factory: Nextras\Dbal\Connection(%dbal%)
+
+	nextras.migrations.dbal:
+		arguments:
+			- @databaseCreatorDbal

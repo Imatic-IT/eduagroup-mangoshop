@@ -1,0 +1,34 @@
+extensions:
+	mangoshop: MangoShop\Bicistickers\Bridges\NetteDI\BicistickersBootstrapExtension
+	contributte.console: Contributte\Console\DI\ConsoleExtension
+	nextras.dbal: Nextras\Dbal\Bridges\NetteDI\DbalExtension
+	nextras.migrations: Nextras\Migrations\Bridges\NetteDI\MigrationsExtension
+
+
+application:
+	scanDirs: []
+	scanComposer: false
+
+
+contributte.console:
+	autoExit: false
+
+
+nextras.dbal:
+	driver: mysqli
+	host: %dbal.host%
+	port: %dbal.port%
+	username: %dbal.username%
+	password: %dbal.password%
+	database: %dbal.database%
+	debugger: false
+
+
+nextras.migrations:
+	driver: mysql
+	dbal: nextras
+	groups: []
+
+
+services:
+	- MangoShop\Bicistickers\Cli\DataGenerateCommand

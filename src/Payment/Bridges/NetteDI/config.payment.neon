@@ -1,0 +1,14 @@
+services:
+	paymentFacade:
+		class: MangoShop\Payment\Api\PaymentFacade
+		tags: [shop.api]
+
+	paymentMethodFacade:
+		class: MangoShop\Payment\Api\PaymentMethodFacade
+		tags: [shop.api]
+
+	paymentDriverProvider:
+		class: MangoShop\Payment\Model\PaymentDriverProvider
+
+	paymentService:
+		class: MangoShop\Payment\Model\PaymentService

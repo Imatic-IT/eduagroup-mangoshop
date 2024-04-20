@@ -1,0 +1,86 @@
+version: 2
+jobs:
+  build:
+    docker:
+    - image: mangoweb/ci-deploy-php:latest
+    - image: mariadb:10.3
+      env:
+        - MYSQL_ROOT_PASSWORD=123
+        - MYSQL_DATABASE=app
+
+    working_directory: ~/app
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: tools
+
+      - restore_cache:
+          key: vendor-{{ checksum "composer.json" }}
+
+      - run:
+          name: Prepare Environment
+          command: |
+            cp stages/ci/local.neon tests/config/local.neon && \
+            cp stages/ci/php.ini tests/php.ini
+
+      - run:
+          name: Install composer
+          command: |
+            bash stages/ci/install-composer.sh
+
+      - run:
+          name: Install PHP dependencies
+          command: |
+            php tools/composer.phar install
+
+      - run:
+          name: Wait for Mysql
+          command: sleep 7
+
+      - run:
+          name: Run PHP Lint
+          when: always
+          command: |
+            bash stages/ci/run-lint.sh
+
+      - run:
+          name: Run PHPStan
+          when: always
+          command: |
+            bash stages/ci/run-phpstan.sh
+
+      - run:
+          name: Run Nette Tester
+          when: always
+          command: |
+            bash stages/ci/run-tester.sh
+
+      - run:
+          name: Run Coding Style Checker
+          when: always
+          command: |
+            bash stages/ci/run-phpcs.sh
+
+      - run:
+          name: Prepare Artifacts
+          when: always
+          command: |
+            find tests -type d -name output -exec cp -r {} log/tests + || true
+            find log -type f -name '.*' -delete
+            find log -type d -empty -delete
+
+      - store_artifacts:
+          path: log
+          destination: log
+
+      - save_cache:
+          key: tools
+          paths:
+            - tools
+
+      - save_cache:
+          key: vendor-{{ checksum "composer.json" }}
+          paths:
+            - vendor

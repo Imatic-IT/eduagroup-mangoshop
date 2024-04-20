@@ -1,0 +1,6 @@
+includes:
+	- config.bootstrap-core.neon
+
+
+extensions:
+	money: MangoShop\Money\Bridges\NetteDI\MoneyExtension

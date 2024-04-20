@@ -1,0 +1,6 @@
+includes:
+	- config.bootstrap-core.neon
+
+
+extensions:
+	promotion: MangoShop\Promotion\Bridges\NetteDI\PromotionExtension

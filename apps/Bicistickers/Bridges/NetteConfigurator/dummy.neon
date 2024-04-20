@@ -1,0 +1,13 @@
+mangoshop:
+	gopay:
+		goid: 123456789
+		clientId: 987654321
+		clientSecret: 'ABC123'
+		isProductionMode: false
+		paymentMethodCode: 'xgopay'
+		returnEndpointUrl: 'https://example.com/return'
+		notifyEndpointUrl: 'https://example.com/notify'
+
+
+services:
+	- MangoShop\Bicistickers\Model\DummyOrderMailContentFactory

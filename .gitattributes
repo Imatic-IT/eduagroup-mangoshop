@@ -1,0 +1,7 @@
+*.php diff=php
+*.phpt diff=php
+*.latte diff=html
+
+/composer.lock -merge
+
+/vendor/** -merge

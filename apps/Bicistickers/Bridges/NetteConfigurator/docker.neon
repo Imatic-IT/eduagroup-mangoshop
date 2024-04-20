@@ -1,0 +1,11 @@
+parameters:
+	dbal:
+		driver: mysqli
+		host: mysql
+		database: app
+		username: root
+		password: 123
+		port: 3306
+
+mangoshop:
+	dbal: %dbal%

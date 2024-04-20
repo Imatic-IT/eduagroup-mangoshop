@@ -1,0 +1,31 @@
+includes:
+	- vendor/phpstan/phpstan-nette/extension.neon
+	- vendor/phpstan/phpstan-nette/rules.neon
+	- tests/phpstan/custom.neon
+
+
+parameters:
+	autoload_directories:
+		- %rootDir%/../../../../src
+		- %rootDir%/../../../../packages
+		- %rootDir%/../../../../tests
+
+	excludes_analyse:
+		- %rootDir%/../../../../tests/setup.php
+		- %rootDir%/../../../../apps/Bicistickers/Admin/public/index.php
+
+	universalObjectCratesClasses:
+		- stdClass
+		- Nette\Http\SessionSection
+		- Nette\Utils\ArrayHash
+		- Nextras\Dbal\Result\Row
+		- Latte\Runtime\FilterExecutor
+
+	earlyTerminatingMethodCalls: []
+	polluteCatchScopeWithTryAssignments: true
+
+	ignoreErrors:
+		- '#Function pcntl_signal not found.#'
+		- '#Constant SIGINT not found.#'
+		- '#Function pcntl_signal_dispatch not found.#'
+		- '#Function getenv invoked with 0 parameters#'

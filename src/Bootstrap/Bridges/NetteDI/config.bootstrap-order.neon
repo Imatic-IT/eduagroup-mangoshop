@@ -1,0 +1,24 @@
+includes:
+	- config.bootstrap-core.neon
+	- config.bootstrap-address.neon
+	- config.bootstrap-channel.neon
+	- config.bootstrap-locale.neon
+	- config.bootstrap-money.neon
+	- config.bootstrap-payment.neon
+	- config.bootstrap-product.neon
+	- config.bootstrap-promotion.neon
+	- config.bootstrap-shipping.neon
+
+
+extensions:
+	order: MangoShop\Order\Bridges\NetteDI\OrderExtension
+
+
+order:
+	processingEntity: %order.processingEntity%
+
+
+services:
+	orderProcessingDriver:
+		type: MangoShop\Order\Model\IOrderProcessingDriver
+		factory: @outerContainer::getByType(MangoShop\Order\Model\IOrderProcessingDriver)

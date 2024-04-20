@@ -1,0 +1,4 @@
+services:
+	facade:
+		class: MangoShop\Locale\Api\LocaleFacade
+		tags: [shop.api]

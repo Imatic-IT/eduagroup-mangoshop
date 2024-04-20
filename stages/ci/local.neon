@@ -1,0 +1,17 @@
+parameters:
+	dbal:
+		host: 127.0.0.1
+		port: 3306
+		username: root
+		password: 123
+		database: app
+
+	gopay:
+		goid: 8452810696
+		clientId: 1829817110
+		clientSecret: VNL3fmDA
+		isProductionMode: false
+
+		paymentMethodCode: gopay
+		returnEndpointUrl: https://httpbin.org/status/200
+		notifyEndpointUrl: https://httpbin.org/status/200

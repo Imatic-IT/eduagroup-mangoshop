@@ -1,0 +1,4 @@
+services:
+	countryFacade:
+		class: MangoShop\Address\Api\CountryFacade
+		tags: [shop.api]

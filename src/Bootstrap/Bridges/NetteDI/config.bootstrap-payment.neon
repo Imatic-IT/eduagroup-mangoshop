@@ -1,0 +1,20 @@
+includes:
+	- config.bootstrap-core.neon
+	- config.bootstrap-locale.neon
+	- config.bootstrap-money.neon
+
+
+extensions:
+	payment: MangoShop\Payment\Bridges\NetteDI\PaymentExtension
+	paymentGoPay: MangoShop\PaymentGoPay\Bridges\NetteDI\PaymentGoPayExtension
+
+
+paymentGoPay:
+	goid: %gopay.goid%
+	clientId: %gopay.clientId%
+	clientSecret: %gopay.clientSecret%
+	isProductionMode: %gopay.isProductionMode%
+
+	paymentMethodCode: %gopay.paymentMethodCode%
+	returnEndpointUrl: %gopay.returnEndpointUrl%
+	notifyEndpointUrl: %gopay.notifyEndpointUrl%

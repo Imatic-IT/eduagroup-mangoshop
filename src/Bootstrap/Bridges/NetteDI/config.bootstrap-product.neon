@@ -1,0 +1,8 @@
+includes:
+	- config.bootstrap-core.neon
+	- config.bootstrap-locale.neon
+	- config.bootstrap-money.neon
+
+
+extensions:
+	product: MangoShop\Product\Bridges\NetteDI\ProductExtension

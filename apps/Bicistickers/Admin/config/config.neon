@@ -1,0 +1,14 @@
+extensions:
+	mangoshop: MangoShop\Bicistickers\Bridges\NetteDI\BicistickersBootstrapExtension
+
+
+application:
+	scanDirs: []
+	scanComposer: false
+	mapping:
+		*: MangoShop\Bicistickers\Admin\Presenters\*\*Presenter
+
+
+services:
+	- MangoShop\Bicistickers\Admin\RouterFactory
+	routing.router: @MangoShop\Bicistickers\Admin\RouterFactory::create

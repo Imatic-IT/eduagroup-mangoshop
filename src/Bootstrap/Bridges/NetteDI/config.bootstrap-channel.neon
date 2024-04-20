@@ -1,0 +1,11 @@
+includes:
+	- config.bootstrap-core.neon
+	- config.bootstrap-locale.neon
+	- config.bootstrap-money.neon
+	- config.bootstrap-payment.neon
+	- config.bootstrap-product.neon
+	- config.bootstrap-shipping.neon
+
+
+extensions:
+	channel: MangoShop\Channel\Bridges\NetteDI\ChannelExtension

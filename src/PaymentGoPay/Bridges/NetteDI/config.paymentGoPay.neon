@@ -1,0 +1,11 @@
+services:
+	facade:
+		class: MangoShop\PaymentGoPay\Api\GoPayPaymentFacade
+		tags: [shop.api]
+
+	paymentDriver:
+		type: MangoShop\PaymentGoPay\Model\GoPayPaymentDriver
+		autowired: self
+
+	goPayApiClient:
+		type: GoPay\Payments

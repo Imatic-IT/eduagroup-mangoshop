@@ -1,0 +1,20 @@
+app.infrastructure:
+	orderProcessingEntity: MangoShop\Bicistickers\Model\BicistickersOrderProcessing
+
+
+nextras.migrations:
+	groups:
+		bicistickers-structures:
+			directory: %rootDir%/apps/Bicistickers/Bridges/NextrasMigrations/structures
+
+
+services:
+	@MangoShop\Product\Model\ProductTranslationsMapper:
+		factory: MangoShop\Bicistickers\Model\BicistickersProductTranslationsMapper
+		arguments:
+			cache: @nextras.orm.cache
+
+	@MangoShop\Product\Model\ProductVariantTranslationsMapper:
+		factory: MangoShop\Bicistickers\Model\BicistickersProductVariantTranslationsMapper
+		arguments:
+			cache: @nextras.orm.cache

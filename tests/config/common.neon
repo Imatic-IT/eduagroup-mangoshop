@@ -1,0 +1,35 @@
+parameters:
+	baseUrl: "https://test.dev"
+	dbal:
+		debugger: false
+		driver: mysqli
+		connectionTz: UTC
+		simpleStorageTz: UTC
+		host: mysql
+		password: "123"
+		username: root
+		database: app
+	migrations:
+		dir: %appDir%/../migrations
+		driver: mysql
+		dbal: nextras
+		withDummyData: false
+
+extensions:
+	nextras.migrations: Nextras\Migrations\Bridges\NetteDI\MigrationsExtension
+	nextras.dbal: Nextras\Dbal\Bridges\NetteDI\DbalExtension
+	nextras.orm: Nextras\Orm\Bridges\NetteDI\OrmExtension
+	shop.nextrasOrm: MangoShop\Bridges\NetteDI\NextrasOrmRepositoryRegistrarExtension
+
+di:
+	debugger: false
+
+nextras.migrations:
+	dir: %migrations.dir%
+	driver: %migrations.driver%
+	dbal: %migrations.dbal%
+	withDummyData: %migrations.withDummyData%
+
+nextras.dbal: %dbal%
+nextras.orm:
+	repositoryFinder: Nextras\Orm\Bridges\NetteDI\DIRepositoryFinder

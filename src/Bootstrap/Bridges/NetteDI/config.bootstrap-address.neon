@@ -1,0 +1,6 @@
+includes:
+	- config.bootstrap-core.neon
+
+
+extensions:
+	address: MangoShop\Address\Bridges\NetteDI\AddressExtension

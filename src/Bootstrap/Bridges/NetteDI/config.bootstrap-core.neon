@@ -1,0 +1,32 @@
+extensions:
+	nette.cache: Nette\Bridges\CacheDI\CacheExtension(%tempDir%)
+
+	nextras.dbal: Nextras\Dbal\Bridges\NetteDI\DbalExtension
+	nextras.orm: Nextras\Orm\Bridges\NetteDI\OrmExtension
+
+	mango.nextras.orm.repositoryRegistrar: MangoShop\Bridges\NetteDI\NextrasOrmRepositoryRegistrarExtension
+
+	core: MangoShop\Core\Bridges\NetteDI\CoreExtension
+
+
+nextras.dbal:
+	driver: mysqli
+	host: %dbal.host%
+	port: %dbal.port%
+	username: %dbal.username%
+	password: %dbal.password%
+	database: %dbal.database%
+	debugger: false
+
+
+nextras.orm:
+	repositoryFinder: Nextras\Orm\Bridges\NetteDI\DIRepositoryFinder
+
+
+services:
+	logger:
+		type: Psr\Log\LoggerInterface
+		factory: @outerContainer::getByType(Psr\Log\LoggerInterface)
+	mailer:
+		type: Nette\Mail\IMailer
+		factory: @outerContainer::getByType(Nette\Mail\IMailer)

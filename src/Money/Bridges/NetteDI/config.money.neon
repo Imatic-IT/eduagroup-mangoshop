@@ -1,0 +1,4 @@
+services:
+	facade:
+		class: MangoShop\Money\Api\CurrencyFacade
+		tags: [shop.api]

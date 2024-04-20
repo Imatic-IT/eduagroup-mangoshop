@@ -1,0 +1,52 @@
+version: '2'
+services:
+    mysql:
+        build: docker/mysql
+        expose:
+            - 3306
+        ports:
+            - 127.0.0.1:13336:3306
+        environment:
+             MYSQL_DATABASE: app
+             MYSQL_ROOT_PASSWORD: 123
+        volumes:
+            - mysql:/var/lib/mysql
+    php:
+        build: docker/php
+        volumes:
+            - .:/var/www/app
+        command: bash
+        tty: true
+        working_dir: "/var/www/app/apps/${APP}"
+        environment:
+            DEBUG: "true"
+            TZ: UTC
+        user: $USER
+
+    admin:
+        build: docker/php
+        volumes:
+            - .:/var/www/app
+        expose:
+            - 8080
+        ports:
+            - 127.0.0.1:13080:8080
+        command: "php -S 0.0.0.0:8080 /var/www/app/apps/${APP}/Admin/public/index.php"
+        environment:
+            DEBUG: "true"
+            TZ: UTC
+        user: $USER
+
+    php-debug:
+        build: docker/php
+        volumes:
+            - .:/var/www/app
+        command: bash
+        tty: true
+        environment:
+            DEBUG: "true"
+            TZ: UTC
+        user: $USER
+
+volumes:
+    mysql:

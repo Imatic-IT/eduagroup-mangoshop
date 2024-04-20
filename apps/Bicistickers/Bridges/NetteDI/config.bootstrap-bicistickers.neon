@@ -1,0 +1,41 @@
+includes:
+	- ../../../../src/Bootstrap/Bridges/NetteDI/config.bootstrap-core.neon
+	- ../../../../src/Bootstrap/Bridges/NetteDI/config.bootstrap-address.neon
+	- ../../../../src/Bootstrap/Bridges/NetteDI/config.bootstrap-channel.neon
+	- ../../../../src/Bootstrap/Bridges/NetteDI/config.bootstrap-locale.neon
+	- ../../../../src/Bootstrap/Bridges/NetteDI/config.bootstrap-money.neon
+	- ../../../../src/Bootstrap/Bridges/NetteDI/config.bootstrap-order.neon
+	- ../../../../src/Bootstrap/Bridges/NetteDI/config.bootstrap-payment.neon
+	- ../../../../src/Bootstrap/Bridges/NetteDI/config.bootstrap-product.neon
+	- ../../../../src/Bootstrap/Bridges/NetteDI/config.bootstrap-promotion.neon
+	- ../../../../src/Bootstrap/Bridges/NetteDI/config.bootstrap-shipping.neon
+
+
+extensions:
+	nextras.migrations: Nextras\Migrations\Bridges\NetteDI\MigrationsExtension
+	mangoweb.mailQueue: Mangoweb\MailQueue\Bridges\NetteDI\MailQueueExtension
+	mangoshop: MangoShop\Bicistickers\Bridges\NetteDI\BicistickersExtension(%debugMode%)
+
+
+nextras.migrations:
+	driver: mysql
+	dbal: nextras
+	groups: []
+
+
+order:
+	processingEntity: MangoShop\Bicistickers\Model\BicistickersOrderProcessing
+
+
+mangoshop:
+	mail:
+		fromName: Bicistickers
+		fromEmail: info@bicistickers.com
+
+
+services:
+	orderProcessingDriver: @mangoshop.processingDriver
+
+	orderMailcontentFactory:
+		type: MangoShop\Bicistickers\Model\IOrderMailContentFactory
+		factory: @outerContainer::getByType(MangoShop\Bicistickers\Model\IOrderMailContentFactory)

@@ -1,0 +1,6 @@
+includes:
+	- config.bootstrap-core.neon
+
+
+extensions:
+	shipping: MangoShop\Shipping\Bridges\NetteDI\ShippingExtension

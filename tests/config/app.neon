@@ -1,0 +1,48 @@
+extensions:
+	shop.core: MangoShop\Core\Bridges\NetteDI\CoreExtension
+	shop.address: MangoShop\Address\Bridges\NetteDI\AddressExtension
+	shop.channel: MangoShop\Channel\Bridges\NetteDI\ChannelExtension
+	shop.locale: MangoShop\Locale\Bridges\NetteDI\LocaleExtension
+	shop.money: MangoShop\Money\Bridges\NetteDI\MoneyExtension
+	shop.order: MangoShop\Order\Bridges\NetteDI\OrderExtension
+	shop.payment: MangoShop\Payment\Bridges\NetteDI\PaymentExtension
+	shop.paymentGoPay: MangoShop\PaymentGoPay\Bridges\NetteDI\PaymentGoPayExtension
+	shop.product: MangoShop\Product\Bridges\NetteDI\ProductExtension
+	shop.promotion: MangoShop\Promotion\Bridges\NetteDI\PromotionExtension
+	shop.shipping: MangoShop\Shipping\Bridges\NetteDI\ShippingExtension
+
+
+php:
+	assert.exception: '1'
+
+
+includes:
+	- common.neon
+
+
+shop.payment:
+	methods:
+		__dummy: MangoShopTests\Payment\Inc\DummyPaymentMethod
+
+
+shop.paymentGoPay:
+	goid: 8452810696
+	clientId: 1829817110
+	clientSecret: VNL3fmDA
+	isProductionMode: false
+
+	paymentMethodCode: gopay
+	returnEndpointUrl: https://httpbin.org/status/200
+	notifyEndpointUrl: https://httpbin.org/status/200
+
+
+services:
+	@MangoShop\Payment\Model\PaymentDriverProvider:
+		setup:
+			- registerPaymentDriver(__dummy, MangoShopTests\Payment\Inc\DummyPaymentDriver())
+
+	- Mangoweb\Tester\LogTester\TestLogger
+	orderProcessingDriver: MangoShopTests\Order\Inc\TestOrderProcessingDriver
+
+shop.order:
+	processingEntity: MangoShopTests\Order\Inc\TestOrderProcessing

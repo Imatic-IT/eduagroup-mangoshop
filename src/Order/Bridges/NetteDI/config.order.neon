@@ -1,0 +1,16 @@
+services:
+	- MangoShop\Order\Model\OrderService
+	- MangoShop\Order\Model\PaymentInitializationRequestFactory
+	- MangoShop\Order\Model\OrderEventDispatcher
+
+	cartFacade:
+		class: MangoShop\Order\Api\CartFacade
+		tags: [shop.api]
+
+	sessionFacade:
+		class: MangoShop\Order\Api\SessionFacade
+		tags: [shop.api]
+
+	orderFacade:
+		class: MangoShop\Order\Api\OrderFacade
+		tags: [shop.api]

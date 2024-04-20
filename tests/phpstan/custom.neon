@@ -1,0 +1,25 @@
+parameters:
+	fileExtensions:
+		- latte
+services:
+	-
+		class: MangoShopTests\PhpStan\MakeAllEnumsFinalOrAbstractRule
+		tags:
+			- phpstan.rules.rule
+	-
+		class: MangoShopTests\PhpStan\NextrasOrm\NextrasOrmSetValueRule
+		tags:
+			- phpstan.rules.rule
+	-
+		class: MangoShopTests\PhpStan\NextrasOrm\NextrasOrmRepositoryClassReflectionExtension
+		tags:
+			- phpstan.broker.methodsClassReflectionExtension
+	-
+		class: \MangoShopTests\PhpStan\NextrasOrm\NextrasOrmPersistTypeExtension
+		tags:
+			- phpstan.broker.dynamicMethodReturnTypeExtension
+
+	-
+		class: \MangoShopTests\PhpStan\EntityGeneratorMethodsTypeExtension
+		tags:
+			- phpstan.broker.dynamicMethodReturnTypeExtension

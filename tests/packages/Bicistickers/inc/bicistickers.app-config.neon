@@ -1,0 +1,25 @@
+extensions:
+	mangoshop:  MangoShop\Bicistickers\Bridges\NetteDI\BicistickersExtension(false)
+
+
+shop.order:
+	processingEntity: MangoShop\Bicistickers\Model\BicistickersOrderProcessing
+
+
+mangoshop:
+	mail:
+		fromName: Bicistickers
+		fromEmail: info@bicistickers.com
+
+
+services:
+	- MangoShopTests\Bicistickers\Inc\TestOrderMailContentFactory
+	orderProcessingDriver: @mangoshop.processingDriver
+
+	nextras.migrations.group.bicistickersDummyData:
+		setup:
+			- $enabled(false)
+
+	nextras.migrations.group.bicistickersBasicData:
+		setup:
+			- $enabled(false)

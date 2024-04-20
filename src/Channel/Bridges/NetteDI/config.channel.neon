@@ -1,0 +1,4 @@
+services:
+	facade:
+		class: MangoShop\Channel\Api\ChannelFacade
+		tags: [shop.api]
