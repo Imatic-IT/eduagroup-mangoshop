@@ -3,7 +3,7 @@
 	"type": "library",
 	"description": "Simple almost event-sourced Nextras ORM based e-shop SDK",
 	"require": {
-		"php": "~7.1",
+		"php": "~8.1",
 		"nette/bootstrap": "~2.4.5",
 		"nette/caching": "~2.5.6",
 		"nette/di": "~2.4.10",
