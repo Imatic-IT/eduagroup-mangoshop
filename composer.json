@@ -55,5 +55,7 @@
 		"classmap-authoritative": true,
 		"bin-compat": "full"
 	},
-	"minimum-stability": "dev"
+	"minimum-stability": "dev",
+    "prefer-stable": true
+
 }
