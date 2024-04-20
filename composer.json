@@ -4,32 +4,30 @@
 	"description": "Simple almost event-sourced Nextras ORM based e-shop SDK",
 	"require": {
 		"php": "~8.1",
-		"nette/bootstrap": "~2.4.5",
-		"nette/caching": "~2.5.6",
+		"nette/bootstrap": "~v3.1.4",
+        "nette/caching": "^3.3",
         "nette/di": "^3.2",
-		"nette/mail": "~2.4.3",
+		"nette/mail": "~v4.0.0",
         "nette/utils": "^4.0",
         "nextras/dbal": "~4.0-dev",
         "nextras/orm": "~4.0-dev",
 		"marc-mabe/php-enum": "~3.0",
 		"gopay/payments-sdk-php": "~1.3.4",
 		"psr/log": "~1.0",
-		"mangoweb/exception-responsibility": "0.0.1",
+		"mangoweb/exception-responsibility": "dev-master",
 		"symfony/console": "~3.4",
 		"contributte/console": "^0.2.0"
 	},
 	"require-dev": {
-		"nette/robot-loader": "~3.0.2",
+		"nette/robot-loader": "~v4.0.1",
 		"nette/tester": "~2.0",
-		"phpstan/phpstan-shim": "~0.9",
 		"phpstan/phpstan-nette": "~0.9",
 		"mockery/mockery": "~1.0",
 		"mangoweb/presenter-tester": "@dev",
 		"mangoweb/tester-infrastructure": "@dev",
-		"mangoweb/tester-database-creator": "@dev",
 		"nextras/migrations": "~3.1@dev",
 		"tracy/tracy": "~2.4",
-		"fzaninotto/faker": "^1.7"
+		"fzaninotto/faker": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
@@ -47,8 +45,8 @@
 	"license": "proprietary",
 	"authors": [
 		{
-			"name": "manGoweB / Imatic sofrware s.r.o.",
-			"email": "info@mangoweb.org / info@imatic.cz "
+			"name": "Imatic sofrware s.r.o.",
+			"email": "info@imatic.cz"
 		}
 	],
 	"config": {
