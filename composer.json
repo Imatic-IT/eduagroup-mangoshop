@@ -1,5 +1,5 @@
 {
-	"name": "mangoweb/mangoshop",
+    "name": "imatic-it/eduagroup-mangoshop",
 	"type": "library",
 	"description": "Simple almost event-sourced Nextras ORM based e-shop SDK",
 	"require": {
@@ -47,8 +47,8 @@
 	"license": "proprietary",
 	"authors": [
 		{
-			"name": "manGoweb",
-			"email": "info@mangoweb.org"
+			"name": "manGoweB / Imatic sofrware s.r.o.",
+			"email": "info@mangoweb.org / info@imatic.cz "
 		}
 	],
 	"config": {
